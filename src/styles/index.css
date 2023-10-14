@@ -1,7 +1,7 @@
-@import '../node_modules/modern-normalize/modern-normalize.css';
-@import '../node_modules/@fontsource/source-sans-pro/700.css';
-@import '../node_modules/@fontsource/source-sans-pro/600.css';
-@import '../node_modules/@fontsource/source-sans-pro/400.css';
+@import '../../node_modules/modern-normalize/modern-normalize.css';
+@import '../../node_modules/@fontsource/source-sans-pro/700.css';
+@import '../../node_modules/@fontsource/source-sans-pro/600.css';
+@import '../../node_modules/@fontsource/source-sans-pro/400.css';
 
 :root {
   font-family: "Source Sans Pro", system-ui, Avenir, Helvetica, Arial, sans-serif;

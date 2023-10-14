@@ -1,0 +1,11 @@
+.responsive-date {
+  @media (max-width: $screen-sm-max) {
+    > span {
+      display: none;
+    }
+    
+    &::before {
+      content: attr(data-short-date);
+    }
+  }
+}
