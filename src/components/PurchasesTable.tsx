@@ -1,6 +1,7 @@
 import './PurchasesTable.scss';
 import { formatCurrency } from '../utils';
 import ResponsiveDate from './ResponsiveDate';
+import Badge from './Badge';
 
 const dummyData = [
   {
@@ -45,6 +46,9 @@ const dummyData = [
   },
 ];
 
+const badgeVariants = ['gray', 'red', 'green', 'blue'] as const;
+const getBadgeVariant = (seed: number) => badgeVariants[seed % 4];
+
 export default function PurchasesTable() {
   return (
     <div className="purchases-table">
@@ -72,7 +76,11 @@ export default function PurchasesTable() {
               <td className="purchase-date">
                 <ResponsiveDate date={purchase.purchaseDate} />
               </td>
-              <td className="purchase-category">{purchase.category}</td>
+              <td className="purchase-category">
+                <Badge variant={getBadgeVariant(purchase.id)}>
+                  {purchase.category}
+                </Badge>
+              </td>
               <td className="purchase-description">{purchase.description}</td>
               <td className="purchase-price">
                 {formatCurrency(purchase.price)}

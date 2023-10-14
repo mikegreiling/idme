@@ -1,0 +1,29 @@
+.badge {
+  display: inline-block;
+  border-radius: 0.125rem;
+  border: 1px solid #CDCED9;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.125rem; /* 18px */
+  padding: 0.125rem 0.75rem;
+  font-weight: 600;
+}
+
+.badge-gray {
+  color: #000;
+  border-color: #CDCED9;
+}
+
+.badge-red {
+  color: #D94130;
+  border-color: #FF8577;
+}
+
+.badge-green {
+  color: #118632;
+  border-color: #98D4A9;
+}
+
+.badge-blue {
+  color: #2E5AAC;
+  border-color: #89A7E0;
+}
