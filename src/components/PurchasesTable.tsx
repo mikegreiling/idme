@@ -55,13 +55,13 @@ export default function PurchasesTable() {
       <table>
         <thead>
           <tr>
-            <th className="purchase-name">Name</th>
-            <th className="purchase-location">Location</th>
-            <th className="purchase-date">Purchase Date</th>
-            <th className="purchase-category">Category</th>
-            <th className="purchase-description">Description</th>
-            <th className="purchase-price">Price</th>
-            <th className="purchase-actions">
+            <th>Name</th>
+            <th>Location</th>
+            <th className="col-center">Purchase Date</th>
+            <th className="col-center">Category</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>
               <span className="sr-only">Actions</span>
             </th>
           </tr>
@@ -69,21 +69,26 @@ export default function PurchasesTable() {
         <tbody>
           {dummyData.map((purchase) => (
             <tr className="purchase" key={purchase.id}>
-              <td className="purchase-name">{purchase.name}</td>
+              <td className="purchase-name">
+                <strong>{purchase.name}</strong>
+              </td>
               <td className="purchase-location">
                 <img src={purchase.location} alt={purchase.name} />
               </td>
-              <td className="purchase-date">
+              <td
+                className="purchase-date col-center"
+                data-label="Purchase Date"
+              >
                 <ResponsiveDate date={purchase.purchaseDate} />
               </td>
-              <td className="purchase-category">
+              <td className="purchase-category col-center">
                 <Badge variant={getBadgeVariant(purchase.id)}>
                   {purchase.category}
                 </Badge>
               </td>
               <td className="purchase-description">{purchase.description}</td>
               <td className="purchase-price">
-                {formatCurrency(purchase.price)}
+                <strong>{formatCurrency(purchase.price)}</strong>
               </td>
               <td className="purchase-actions">-</td>
             </tr>

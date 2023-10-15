@@ -1,67 +1,149 @@
 
 .purchases-table {
-  border: 1px solid #E7E7ED;
-  border-radius: 0.25rem;
   color: #272833;
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  font-weight: 400;
+
+  strong {
+    font-weight: 700;
+  }
 
   table {
     border-collapse: collapse;
     width: 100%;
   }
 
+  table, tbody {
+    display: block;
+  }
+
   thead {
-    border-bottom: 1px solid #E7E7ED;
+    display: none;
   }
+}
 
-  th {
+.purchase {
+  display: grid;
+  grid-template-columns: 2rem auto auto;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #CDCED9;
+  border-radius: 0.625rem; /* 10px */
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.purchase-location {
+  order: 1;
+
+  img {
+    display: block;
+    width: 2rem; /* 32px */
+    height: 2rem; /* 32px */
+    border-radius: 1000px;
+  }
+}
+
+.purchase-name {
+  order: 2;
+}
+
+.purchase-price {
+  order: 3;
+  justify-self: right;
+}
+
+.purchase-description {
+  order: 4;
+  grid-column: span 2;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  margin-bottom: 0.25rem;
+}
+
+.purchase-date {
+  order: 5;
+  grid-column: span 3;
+  font-size: 1rem;
+  line-height: 1rem;
+
+  &::before {
+    display: block;
     font-weight: 600;
-    text-align: left;
+    content: attr(data-label);
+  }
+}
+
+.purchase-category,
+.purchase-actions {
+  display: none;
+}
+
+@media (min-width: $screen-md-min) {
+  .purchases-table {
+    border: 1px solid #E7E7ED;
+    border-radius: 0.25rem;
+
+    .col-center {
+      text-align: center;
+    }
+
+    // reset all of our grid shinanigans from the mobile view
+    table, thead, tbody, tr, td, th {
+      display: revert;
+      order: revert;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+
+    thead {
+      border-bottom: 1px solid #E7E7ED;
+    }
+
+    th {
+      font-weight: 600;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem 3rem;
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-left: 3rem; /* 48px */
+    }
   }
 
-  th, td {
-    padding: 0.5rem 0.75rem; /* 12px */
-    font-size: 1rem; /* 16px */
-    line-height: 1.5rem; /* 24px */
-  }
-
-  td {
-    padding-bottom: 3rem; /* 48px */
-  }
-
-  th:first-child,
-  td:first-child {
-    padding-left: 3rem; /* 48px */
+  .purchase-location img {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .purchase-date,
-  .purchase-category {
-    text-align: center;
+  .purchase-description {
+    font-weight: 400;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  .purchase-date {
+    white-space: nowrap;
+
+    &::before {
+      display: none;
+    }
   }
 
   .purchase-description {
     max-width: 300px;
-  }
-
-  tbody {
-    .purchase-name,
-    .purchase-price {
-      font-weight: 700;
-    }
-
-    .purchase-location img {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 1000px;
-    }
-
-    .purchase-date {
-      font-weight: 400;
-      font-size: 0.875rem; /* 14px */
-    }
-
-    .purchase-description {
-      font-size: 0.875rem; /* 14px */
-      line-height: 1.25rem; /* 20px */
-    }
   }
 }
