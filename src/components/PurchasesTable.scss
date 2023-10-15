@@ -1,3 +1,13 @@
+/* 
+ * PurchasesTable uses an HTML table to render a list of purchases
+ *
+ * The table is responsive, and will collapse into a set of "cards" on
+ * mobile. This is achieved by overriding the default table styles and
+ * using CSS grid to lay out the card contents and re-order the fields
+ *
+ * The CSS is defined in a mobile-first manner, and then overridden to
+ * restore the normal table layout on larger screens
+ */
 
 .purchases-table {
   color: #272833;
@@ -7,6 +17,24 @@
 
   strong {
     font-weight: 700;
+  }
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 1.5rem; /* 24px */
+    height: 1.5rem; /* 24px */
+
+    path {
+      stroke: #6B6C7E;
+      stroke-width: 1;
+    }
   }
 
   table {

@@ -2,6 +2,7 @@ import './PurchasesTable.scss';
 import { formatCurrency } from '../utils';
 import ResponsiveDate from './ResponsiveDate';
 import Badge from './Badge';
+import { EllipsisVerticalIcon } from '@heroicons/react/24/solid';
 
 const dummyData = [
   {
@@ -90,7 +91,11 @@ export default function PurchasesTable() {
               <td className="purchase-price">
                 <strong>{formatCurrency(purchase.price)}</strong>
               </td>
-              <td className="purchase-actions">-</td>
+              <td className="purchase-actions">
+                <button>
+                  <EllipsisVerticalIcon className="icon" />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

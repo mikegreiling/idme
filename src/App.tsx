@@ -1,5 +1,5 @@
-import "./App.css";
-import PurchasesTable from "./components/PurchasesTable";
+import './App.scss';
+import PurchasesTable from './components/PurchasesTable';
 
 function App() {
   return (
