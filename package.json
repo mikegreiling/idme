@@ -12,10 +12,14 @@
   "dependencies": {
     "@fontsource/source-sans-pro": "^5.0.8",
     "@heroicons/react": "^2.0.18",
+    "@tanstack/react-query": "^4.36.1",
     "dayjs": "^1.11.10",
+    "html-entities": "^2.4.0",
     "modern-normalize": "^2.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-spinners": "^0.13.8",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

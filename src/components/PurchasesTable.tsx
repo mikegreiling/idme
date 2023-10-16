@@ -1,56 +1,23 @@
 import './PurchasesTable.scss';
-import { formatCurrency } from '../utils';
+import { formatCurrency } from '../common/utils';
 import ResponsiveDate from './ResponsiveDate';
 import Badge from './Badge';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/solid';
+import type { Purchase } from '../common/schemas';
 
-const dummyData = [
-  {
-    id: 99,
-    location:
-      'https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png',
-    purchaseDate: '2021-12-20T00:00:00.000Z',
-    category: 'Technology',
-    description: 'Lorem ipsum dolor sit amet consectetur',
-    price: 245.95,
-    name: 'Apple',
-  },
-  {
-    id: 1,
-    location: 'https://picsum.photos/id/0/200',
-    purchaseDate: '2020-12-27T00:00:00.000Z',
-    category: 'Food',
-    description:
-      "connecting the card won't do anything, we need to back up the digital HDD driver!",
-    price: 99882,
-    name: 'auxiliary generating microchip',
-  },
-  {
-    id: 2,
-    location: 'https://picsum.photos/id/1/200',
-    purchaseDate: '2020-12-28T00:00:00.000Z',
-    category: 'Technology',
-    description:
-      "I'll synthesize the primary SMTP firewall, that should monitor the ADP feed!",
-    price: 69706,
-    name: '1080p backing up port',
-  },
-  {
-    id: 3,
-    location: 'https://picsum.photos/id/2/200',
-    purchaseDate: '2020-12-29T00:00:00.000Z',
-    category: 'Footwear',
-    description:
-      "You can't reboot the feed without transmitting the back-end SMS pixel!",
-    price: 8307,
-    name: 'auxiliary generating panel',
-  },
-];
-
+// If I had more time here, I'd make this select a deterministic
+// variant based on the purchase category string. For now, I'm just
+// cycling through the variants based on the purchase ID.
 const badgeVariants = ['gray', 'red', 'green', 'blue'] as const;
-const getBadgeVariant = (seed: number) => badgeVariants[seed % 4];
+const getBadgeVariant = (seed: number) =>
+  badgeVariants[seed % badgeVariants.length];
 
-export default function PurchasesTable() {
+// Type safety enforced by our zod schema
+type PurchasesTableProps = {
+  purchases: Purchase[];
+};
+
+export default function PurchasesTable({ purchases }: PurchasesTableProps) {
   return (
     <div className="purchases-table">
       <table>
@@ -68,7 +35,7 @@ export default function PurchasesTable() {
           </tr>
         </thead>
         <tbody>
-          {dummyData.map((purchase) => (
+          {purchases.map((purchase) => (
             <tr className="purchase" key={purchase.id}>
               <td className="purchase-name">
                 <strong>{purchase.name}</strong>
@@ -78,7 +45,7 @@ export default function PurchasesTable() {
               </td>
               <td
                 className="purchase-date col-center"
-                data-label="Purchase Date"
+                data-responsive-label="Purchase Date"
               >
                 <ResponsiveDate date={purchase.purchaseDate} />
               </td>
@@ -89,9 +56,11 @@ export default function PurchasesTable() {
               </td>
               <td className="purchase-description">{purchase.description}</td>
               <td className="purchase-price">
-                <strong>{formatCurrency(purchase.price)}</strong>
+                {/* I'm making an assumption that "price" is in cents not dollars */}
+                <strong>{formatCurrency(purchase.price / 100)}</strong>
               </td>
               <td className="purchase-actions">
+                {/* If I had time, I'd make this open up a disclosure menu or something */}
                 <button>
                   <EllipsisVerticalIcon className="icon" />
                 </button>

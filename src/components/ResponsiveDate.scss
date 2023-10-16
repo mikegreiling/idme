@@ -1,5 +1,13 @@
+/**
+ * Responsive date
+ *
+ * This implementation is probably a little too cute, and could be
+ * easily replaced with a more straightforward approach of two
+ * separate elements, selectively hidden based on the screen size.
+ */
+
 .responsive-date {
-  @media (max-width: $screen-sm-max) {
+  @media (max-width: $screen-md-max) {
     > span {
       display: none;
     }
